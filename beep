@@ -1,5 +1,17 @@
 #!/bin/bash
 
+[ "$EUID" -ne 0 ] && {
+  echo "Execute esse script como Root! Saindo..."
+  exit
+  }
+
+PKG_OK=$(dpkg-query -W 1> /dev/null 2> /dev/null beep && echo "sim" || echo "nao")
+[ "$PKG_OK" = "nao" ] && {
+  sudo apt install beep
+}||{
+  echo "Ok" > /dev/null
+}
+
 sudo modprobe pcspkr
 
 sudo env -u SUDO_GID -u SUDO_COMMAND -u SUDO_USER -u SUDO_UID beep -f 1000 -l 200 -r 1
