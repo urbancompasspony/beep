@@ -8,9 +8,8 @@
 PKG_OK=$(dpkg-query -W 1> /dev/null 2> /dev/null beep && echo "sim" || echo "nao")
 [ "$PKG_OK" = "nao" ] && {
   sudo apt install beep
-  sudo crontab -l > crontab-bkp
-  echo "12 11 * * * bash /home/administrador/.beep.sh" >> /tmp/crontab_new
-  sudo crontab /tmp/crontab_new
+  echo "@reboot sleep 60; bash /home/administrador/.beep.sh" >> /tmp/crontab_new
+  crontab -l | cat - /tmp/crontab_new > crontab.txt && crontab crontab.txt
 }||{
   echo "Ok" > /dev/null
 }
