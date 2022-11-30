@@ -1,4 +1,5 @@
 sudo modprobe pcspkr snd-pcsp
+Or edit: /etc/modprobe.d/blacklist.conf
 
 sudo chmod 777 /dev/input/by-path/platform-pcspkr-event-spkr
 
