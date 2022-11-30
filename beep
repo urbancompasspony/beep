@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo modprobe pcspkr
+
+sudo env -u SUDO_GID -u SUDO_COMMAND -u SUDO_USER -u SUDO_UID beep -f 1000 -l 200 -r 1
+
+sudo env -u SUDO_GID -u SUDO_COMMAND -u SUDO_USER -u SUDO_UID beep -f 2000 -l 200 -r 1
+
+sudo env -u SUDO_GID -u SUDO_COMMAND -u SUDO_USER -u SUDO_UID beep -f 3000 -l 200 -r 2
+
+exit 1
