@@ -1,8 +1,9 @@
 sudo modprobe pcspkr snd-pcsp
 Or edit: /etc/modprobe.d/blacklist.conf
 
-sudo chmod 777 /dev/input/by-path/platform-pcspkr-event-spkr
-
+Then:
 sudo env -u SUDO_GID -u SUDO_COMMAND -u SUDO_USER -u SUDO_UID beep
 
+Or:
+sudo chmod 777 /dev/input/by-path/platform-pcspkr-event-spkr
 beep
